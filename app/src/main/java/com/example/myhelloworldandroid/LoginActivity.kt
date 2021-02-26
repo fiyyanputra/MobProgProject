@@ -6,11 +6,9 @@ import android.os.Bundle
 import android.view.View
 import android.widget.Button
 import android.widget.EditText
+import android.widget.Toast
 
 class LoginActivity : AppCompatActivity() {
-
-
-
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_login)
@@ -20,11 +18,13 @@ class LoginActivity : AppCompatActivity() {
         val loginButton: Button = findViewById(R.id.loginButton)
 
         loginButton.setOnClickListener(View.OnClickListener {
-            val i = Intent(this@LoginActivity, SecondActivity::class.java)
+            val i = Intent(this@LoginActivity, HomeActivity::class.java)
             startActivity(i)
-            finish()
+
+            //TODO
+            //lakukan validasi
+            //jika tidak valid tampilkan toast
+            //Toast.makeText(this, "Login Gagal. User tidak ditemukan", Toast.LENGTH_SHORT).show()
         })
-
-
     }
 }
