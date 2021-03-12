@@ -2,20 +2,41 @@ package com.example.myhelloworldandroid
 
 import androidx.appcompat.app.AppCompatActivity
 import android.os.Bundle
+import android.util.Log
+import android.widget.Toast
+import kotlinx.android.synthetic.main.activity_home.*
 import okhttp3.*
 import java.io.IOException
 
 class HomeActivity : AppCompatActivity() {
 
-    val client = OkHttpClient()
+
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
         setContentView(R.layout.activity_home)
 
-        run("https://api.openweathermap.org/data/2.5/forecast?q=purwakarta,ID&appid=2ce659b9c25fc6fe3a07de4ca71d1dac")
+        //run("https://api.openweathermap.org/data/2.5/forecast?q=purwakarta,ID&appid=2ce659b9c25fc6fe3a07de4ca71d1dac")
+
+       NetworkConfig().getService().getWeathers("purwakarta,ID", "2ce659b9c25fc6fe3a07de4ca71d1dac").enqueue(object : retrofit2.Callback<ResultWeather> {
+
+           override fun onResponse(call: retrofit2.Call<ResultWeather>, response: retrofit2.Response<ResultWeather>) {
+               //var item = response.body()
+               Log.d("response", response.body().toString())
+
+               //txtKota.setText(item.city.name)
+           }
+
+           override fun onFailure(call: retrofit2.Call<ResultWeather>, t: Throwable) {
+               Log.d("error response service", t.message.toString())
+
+               Toast.makeText(applicationContext, t.message.toString(), Toast.LENGTH_LONG).show()
+           }
+       })
+
     }
 
-    fun run(url: String){
+fun run(url: String){
+        val client = OkHttpClient()
         val request = Request.Builder()
             .url(url)
             .build()

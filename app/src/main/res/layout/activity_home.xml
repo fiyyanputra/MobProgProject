@@ -15,6 +15,17 @@
                 app:layout_collapseMode="parallax">
 
                 <TextView
+                    android:id="@+id/txtKota"
+                    android:text="Bandung"
+                    android:textColor="@android:color/black"
+                    android:textSize="14sp"
+                    android:layout_width="wrap_content"
+                    android:layout_height="wrap_content"
+                    android:layout_above="@+id/txtTanggal"
+                    android:layout_marginLeft="40dp"
+                    android:layout_marginStart="40dp"/>
+
+                <TextView
                     android:id="@+id/txtTanggal"
                     android:text="Today, Oktober 22"
                     android:textColor="@android:color/black"
