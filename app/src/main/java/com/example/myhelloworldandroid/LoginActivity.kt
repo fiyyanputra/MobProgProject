@@ -20,11 +20,6 @@ class LoginActivity : AppCompatActivity() {
         loginButton.setOnClickListener(View.OnClickListener {
             val i = Intent(this@LoginActivity, HomeActivity::class.java)
             startActivity(i)
-
-            //TODO
-            //lakukan validasi
-            //jika tidak valid tampilkan toast
-            //Toast.makeText(this, "Login Gagal. User tidak ditemukan", Toast.LENGTH_SHORT).show()
         })
     }
 }
